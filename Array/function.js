@@ -1,4 +1,10 @@
-function reverseArray(arr) {
+function bai1() {
+    let arr = []
+    let n = prompt("Nhập kích thước mảng: ")
+    for(i = 0; i < n; i++){
+        let x = prompt("Nhập giá trị tại chỉ mục thứ " + i + " của mảng");
+        arr[i] = x
+    }
     let left = 0;
     let right = arr.length - 1;
 
@@ -9,21 +15,7 @@ function reverseArray(arr) {
         left++;
         right--;
     }
-
-    return arr;
-}
-
-function bai1() {
-    let arr = []
-    let n = prompt("Nhập kích thước mảng: ")
-    for(i = 0; i < n; i++){
-        let x = prompt("Nhập giá trị tại chỉ mục thứ " + i + " của mảng");
-        arr[i] = x
-    }
-
-    let reversedArray = reverseArray(arr);
-
-    alert("Mảng sau khi đảo ngược: " + reversedArray);
+    alert("Mảng sau khi đảo ngược: " + arr);
 }
 
 function bai2() {
@@ -75,20 +67,6 @@ function bai3() {
     }
 }
 
-function findMaxInArray(arr) {
-    if (arr.length === 0) {
-        return null;
-    }
-
-    let max = arr[0];
-    for (let i = 1; i < arr.length; i++) {
-        if (arr[i] > max) {
-            max = arr[i];
-        }
-    }
-    return max;
-}
-
 function bai4() {
     let arr = []
     let n = prompt("Nhập kích thước mảng: ")
@@ -103,7 +81,12 @@ function bai4() {
         return;
     }
 
-    let max = findMaxInArray(arr);
+    let max = arr[0];
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
     if (max !== null) {
         alert("Giá trị lớn nhất trong dãy số là: " + max);
     } else {
@@ -168,19 +151,25 @@ function bai5() {
     
     while (true) {
         const command = prompt("Nhập vào lệnh (C - Create, R - Read, U - Update, D - Delete, Q - Quit):").toUpperCase();
-        if (command === 'C') {
-            createTodo();
-        } else if (command === 'R') {
-            readTodoList();
-        } else if (command === 'U') {
-            updateTodo();
-        } else if (command === 'D') {
-            deleteTodo();
-        } else if (command === 'Q') {
-            alert("Đã thoát khỏi chương trình.");
-            break;
-        } else {
-            alert("Lệnh không hợp lệ. Vui lòng nhập lại.");
+        switch(command){
+            case 'C': 
+                createTodo()
+                break
+            case 'R': 
+                readTodoList()
+                break
+            case 'U': 
+                updateTodo()
+                break
+            case 'D': 
+                deleteTodo()
+                break
+            case 'Q': 
+                alert("Đã thoát khỏi chương trình.")
+                return false
+            default: 
+                alert("Lệnh không hợp lệ. Vui lòng nhập lại.");
+                break
         }
     }
 }
